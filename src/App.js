@@ -2,12 +2,14 @@ import {
   ChakraProvider,
   theme,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
+
+import { Navbar } from './components/Navbar';
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <ColorModeSwitcher justifySelf="flex-end" />
+      <Navbar />
+      
     </ChakraProvider>
   );
 }
