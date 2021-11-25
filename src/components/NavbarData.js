@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import {
   Flex,
   SimpleGrid,
@@ -6,8 +7,10 @@ import {
   StatLabel,
   StatNumber,
 } from '@chakra-ui/react'
+import { apiContext } from '../context/Context'
 
 export const NavbarData = () => {
+    const { isFetching, totalCharacters, totalEpisodes, totalLocations } = useContext(apiContext)
   return (
     <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} pl="10%" spacing="24px">
       <Flex align="center" w="60%">
@@ -21,12 +24,12 @@ export const NavbarData = () => {
             Characters
           </StatLabel>
           <Flex>
-            <StatNumber fontSize="lg" color={textColor}>
+            <StatNumber fontSize="lg" color="gray.700">
               {isFetching ? '...' : totalCharacters}
             </StatNumber>
           </Flex>
         </Stat>
-      </Flex>  
+      </Flex>
       <Flex w="60%">
         <Stat>
           <StatLabel
@@ -38,7 +41,7 @@ export const NavbarData = () => {
             Locations
           </StatLabel>
           <Flex>
-            <StatNumber fontSize="lg" color={textColor}>
+            <StatNumber fontSize="lg" color="gray.700">
               {isFetching ? '...' : totalLocations}
             </StatNumber>
           </Flex>
@@ -56,7 +59,7 @@ export const NavbarData = () => {
             Episodes
           </StatLabel>
           <Flex>
-            <StatNumber fontSize="lg" color={textColor} fontWeight="bold">
+            <StatNumber fontSize="lg" color="gray.700" fontWeight="bold">
               {isFetching ? '...' : totalEpisodes}
             </StatNumber>
           </Flex>
