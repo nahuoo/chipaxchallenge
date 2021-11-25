@@ -20,30 +20,30 @@ export const Home = () => {
     const { isFetching, totalCharacters, totalEpisodes, totalLocations } = useContext(apiContext)
 
     return (
-      <Flex flexDirection="column" pt={{ base: '120px', md: '75px' }}>
+      <Flex
+        ml={{ sm: 1, md: '20%'}}
+        flexDirection="column"
+        pt={{ base: '120px', md: '75px' }}
+      >
         <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} pl="10%" spacing="24px">
-          <Card minH="83px">
-            <Box>
-              <Flex align="center" w="60%">
-                <Stat me="auto">
-                  <StatLabel
-                    fontSize="sm"
-                    color="gray.400"
-                    fontWeight="bold"
-                    pb=".1rem"
-                  >
-                    Characters
-                  </StatLabel>
-                  <Flex>
-                    <StatNumber fontSize="lg" color="gray.500">
-                      {isFetching ? '...' : totalCharacters}
-                    </StatNumber>
-                  </Flex>
-                </Stat>
+          <Box>
+            <Stat me="auto">
+              <StatLabel
+                fontSize="sm"
+                color="black"
+                fontWeight="bold"
+                pb=".1rem"
+              >
+                Characters
+              </StatLabel>
+              <Flex>
+                <StatNumber fontSize="lg" color="gray.500">
+                  {isFetching ? '...' : totalCharacters}
+                </StatNumber>
               </Flex>
-            </Box>
-          </Card>
-          <Card minH="83px">
+            </Stat>
+          </Box>
+          <Box minH="83px">
             <Box>
               <Flex w="60%">
                 <Stat>
@@ -64,8 +64,8 @@ export const Home = () => {
                 <Spacer />
               </Flex>
             </Box>
-          </Card>
-          <Card minH="83px">
+          </Box>
+          <Box minH="83px">
             <Box>
               <Flex w="60%">
                 <Stat me="auto">
@@ -78,18 +78,14 @@ export const Home = () => {
                     Episodes
                   </StatLabel>
                   <Flex>
-                    <StatNumber
-                      fontSize="lg"
-                      color='black'
-                      fontWeight="bold"
-                    >
+                    <StatNumber fontSize="lg" color="black" fontWeight="bold">
                       {isFetching ? '...' : totalEpisodes}
                     </StatNumber>
                   </Flex>
                 </Stat>
               </Flex>
             </Box>
-          </Card>
+          </Box>
         </SimpleGrid>
         <Grid
           templateColumns={{ md: '1fr', lg: '1.8fr 1.2fr' }}
@@ -97,7 +93,7 @@ export const Home = () => {
           my="26px"
           gap="24px"
         >
-          <Card minHeight="290.5px" p="1.2rem">
+          <Box minHeight="290.5px" p="1.2rem">
             <Box w="100%">
               <Flex flexDirection={{ sm: 'column', lg: 'row' }} w="100%">
                 <Flex
@@ -144,7 +140,7 @@ export const Home = () => {
                 </Flex>
               </Flex>
             </Box>
-          </Card>
+          </Box>
         </Grid>
       </Flex>
     )

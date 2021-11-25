@@ -35,20 +35,14 @@ export const ApiDataProvider = ({ children }) => {
         .all(allUrls(indexPages, 'episode'))
         .then(
           axios.spread((...res) => {
-            for (let i = 0; i < res.length-1 ; i++) {
-                for (let j = 0; j < 20; j++) {
-                  console.log(j)
-                if (res[i].data.results[j].id <= totalEpisodes) {
-                  episodes.push(res[i].data.results[j].name)
-                }
+            for (let i = 0; i < res.length ; i++) {
+                for (let j = 0; j < 20; j++ ) {
+                  if (res[i].data.results[j]?.id <= totalEpisodes) {
+                    episodes.push(res[i].data.results[j].name)
+                  }
               }
             }
           })
-        )
-        .then(
-          console.log(
-            episodes
-          )
         )
         .catch(error => {
           console.log(error)
@@ -69,12 +63,13 @@ export const ApiDataProvider = ({ children }) => {
       for (let i = 1; i < totalCharactersPages + 1; i++) {
         indexPages.push(i)
       }
-      await axios.all(allUrls(indexPages, 'character'))
+      await axios
+        .all(allUrls(indexPages, 'character'))
         .then(
           axios.spread((...res) => {
-            for (let i = 0; i < res.length - 1; i++) {
+            for (let i = 0; i < res.length ; i++) {
               for (let j = 0; j < 20; j++) {
-                if (res[i].data.results[j].id <= totalCharacters) {
+                if (res[i].data.results[j]?.id <= totalCharacters) {
                   characters.push(res[i].data.results[j].name)
                   arrLocations.push(res[i].data.results[j].location.name)
                 }
@@ -82,6 +77,7 @@ export const ApiDataProvider = ({ children }) => {
             }
           })
         )
+        .then(console.log(characters))
         .catch(error => {
           console.log(error)
         })
@@ -93,6 +89,7 @@ export const ApiDataProvider = ({ children }) => {
   }
 
   useEffect(() => {
+      console.time()
     async function fetchInitialData() {
       await axios.all([
           axios.get('https://rickandmortyapi.com/api/episode'),
@@ -107,13 +104,14 @@ export const ApiDataProvider = ({ children }) => {
             setTotalCharacters(res[2].data.info.count)
             setTotalCharactersPages(res[2].data.info.pages)
             setIsFetching(false)
-            getAllEpisodes()
-          })
+        })
         )
         .catch(error => console.log(error))
     }
     fetchInitialData()
+    getAllEpisodes()
     getCharactersAndLocation()
+    console.timeEnd()
   })
 
   const value = {
