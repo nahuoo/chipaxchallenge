@@ -40,9 +40,6 @@ export const Home = () => {
                     </StatNumber>
                   </Flex>
                 </Stat>
-                <IconBox as="box" h={'45px'} w={'45px'} bg={iconTeal}>
-                  <GlobeIcon h={'24px'} w={'24px'} color={iconBoxInside} />
-                </IconBox>
               </Flex>
             </Box>
           </Card>
@@ -65,9 +62,6 @@ export const Home = () => {
                   </Flex>
                 </Stat>
                 <Spacer />
-                <IconBox as="box" h={'45px'} w={'45px'} bg={iconTeal}>
-                  <DocumentIcon h={'24px'} w={'24px'} color={iconBoxInside} />
-                </IconBox>
               </Flex>
             </Box>
           </Card>
@@ -86,16 +80,13 @@ export const Home = () => {
                   <Flex>
                     <StatNumber
                       fontSize="lg"
-                      color={textColor}
+                      color='black'
                       fontWeight="bold"
                     >
                       {isFetching ? '...' : totalEpisodes}
                     </StatNumber>
                   </Flex>
                 </Stat>
-                <IconBox as="box" h={'45px'} w={'45px'} bg={iconTeal}>
-                  <CartIcon h={'24px'} w={'24px'} color={iconBoxInside} />
-                </IconBox>
               </Flex>
             </Box>
           </Card>
