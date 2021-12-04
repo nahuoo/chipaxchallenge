@@ -77,7 +77,7 @@ export const Footer = () => {
             </SocialButton>
           </Flex>
           <Text pt={6} fontSize={'sm'} textAlign={'center'}>
-            © 2020 Chakra Templates. All rights reserved
+            © 2021 Chipax Challenge
           </Text>
         </Box>
       </Box>

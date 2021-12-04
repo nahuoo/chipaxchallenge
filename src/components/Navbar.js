@@ -8,6 +8,7 @@ import {
   Drawer,
   DrawerContent,
   Text,
+  Button,
   useDisclosure,
 } from '@chakra-ui/react'
 import {
@@ -19,6 +20,7 @@ import {
 } from 'react-icons/fi'
 import { ColorModeSwitcher } from '../ColorModeSwitcher'
 import { NavItem } from './NavItem'
+import { CharCounter } from '../context/CharCounter'
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -48,6 +50,11 @@ export const Navbar = () => {
 }
 
 const SidebarContent = ({ onClose, ...rest }) => {
+
+  const handleButton = () => {
+    CharCounter()
+  }
+
   return (
     <Box
       transition="5s ease"
@@ -63,11 +70,14 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           ChipaxChallenge
         </Text>
-      <ColorModeSwitcher />
+        <ColorModeSwitcher />
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       <NavItem icon={FiHome}>Home</NavItem>
-      <NavItem icon={FiTrendingUp}>Char Counter</NavItem>
+      <NavItem icon={FiTrendingUp} >
+        Char Counter
+      </NavItem>
+      <Button onClick={handleButton}>botoncito</Button>
       <NavItem icon={FiCompass}>Episodde Location</NavItem>
     </Box>
   )
