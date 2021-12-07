@@ -20,9 +20,7 @@ import {
 } from 'react-icons/fi'
 import { ColorModeSwitcher } from '../ColorModeSwitcher'
 import { NavItem } from './NavItem'
-import { charCounter } from '../context/CharCounter'
-import { useContext } from 'react'
-import { apiContext } from '../context/Context'
+
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -52,10 +50,6 @@ export const Navbar = () => {
 }
 
 const SidebarContent = ({ onClose, ...rest }) => {
-  const { totalEpisodesPages, totalEpisodes, totalCharactersPages, totalCharacters } = useContext(apiContext)
-  const handleButton = () => {
-    charCounter(totalEpisodesPages, totalEpisodes, totalCharactersPages, totalCharacters )
-  }
 
   return (
     <Box
@@ -79,7 +73,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
       <NavItem icon={FiTrendingUp} >
         Char Counter
       </NavItem>
-      <Button onClick={handleButton}>botoncito</Button>
       <NavItem icon={FiCompass}>Episodde Location</NavItem>
     </Box>
   )

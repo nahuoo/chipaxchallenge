@@ -1,19 +1,21 @@
 import axios from 'axios'
 import { allUrls } from './Context'
 import { Box, Button, Flex, Grid, Spacer, Text, CircularProgress } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { apiContext } from '../context/Context'
 
-export const CharCounter = (
-  totalEpisodesPages,
-  totalEpisodes,
-  totalCharactersPages,
-  totalCharacters
-) => {
+export const CharCounter = () => {
   const [totalTime, setTotalTime] = useState(0)
   const [charInEpisodes, setCharInEpisodes] = useState(0)
   const [charInLocations, setCharInLocations] = useState(0)
   const [charInCharacters, setCharInCharacters] = useState(0)
   const [isFetching, setIsFetching] = useState(true)
+  const {
+    totalEpisodesPages,
+    totalEpisodes,
+    totalCharactersPages,
+    totalCharacters,
+  } = useContext(apiContext)
   
   useEffect( () => {
       async function  getData() {
