@@ -8,7 +8,6 @@ import {
   Drawer,
   DrawerContent,
   Text,
-  Button,
   useDisclosure,
 } from '@chakra-ui/react'
 import {
