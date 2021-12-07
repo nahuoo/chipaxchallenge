@@ -69,11 +69,15 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <ColorModeSwitcher />
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
-      <NavItem icon={FiHome}>Home</NavItem>
-      <NavItem icon={FiTrendingUp} >
+      <NavItem icon={FiHome} route={'/'}>
+        Home
+      </NavItem>
+      <NavItem icon={FiTrendingUp} route={'/charcounter'}>
         Char Counter
       </NavItem>
-      <NavItem icon={FiCompass}>Episodde Location</NavItem>
+      <NavItem icon={FiCompass} route={'/episodelocation'}>
+        Episode Location
+      </NavItem>
     </Box>
   )
 }
