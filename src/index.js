@@ -5,13 +5,16 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import * as serviceWorker from './serviceWorker'
 import { ApiDataProvider } from './context/Context'
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
   <StrictMode>
-    <ApiDataProvider>
-      <ColorModeScript />
-      <App />
-    </ApiDataProvider>
+    <BrowserRouter>
+      <ApiDataProvider>
+        <ColorModeScript />
+        <App />
+      </ApiDataProvider>
+    </BrowserRouter>
   </StrictMode>,
   document.getElementById('root')
 )
