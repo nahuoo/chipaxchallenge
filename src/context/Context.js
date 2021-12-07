@@ -23,75 +23,10 @@ export const ApiDataProvider = ({ children }) => {
   const [totalLocations, setTotalLocations] = useState(0)
   const [isFetching, setIsFetching] = useState(true)
 
-
-  const getAllEpisodes = async () => {
-    let indexPages = []
-    let episodes = []
-    try {
-        for (let i = 1; i < totalEpisodesPages + 1; i++) {
-          indexPages.push(i)
-        }
-      await axios
-        .all(allUrls(indexPages, 'episode'))
-        .then(
-          axios.spread((...res) => {
-            for (let i = 0; i < res.length ; i++) {
-                for (let j = 0; j < 20; j++ ) {
-                  if (res[i].data.results[j]?.id <= totalEpisodes) {
-                    episodes.push(res[i].data.results[j].name)
-                  }
-              }
-            }
-          })
-        )
-        .catch(error => {
-          console.log(error)
-        })
-        
-        
-    } catch (err) {
-      console.error(err)
-    }
-    
-  }
-
-  const getCharactersAndLocation = async () => {
-    let indexPages = []
-    let characters = []
-    let arrLocations = []
-    try {
-      for (let i = 1; i < totalCharactersPages + 1; i++) {
-        indexPages.push(i)
-      }
-      await axios
-        .all(allUrls(indexPages, 'character'))
-        .then(
-          axios.spread((...res) => {
-            for (let i = 0; i < res.length ; i++) {
-              for (let j = 0; j < 20; j++) {
-                if (res[i].data.results[j]?.id <= totalCharacters) {
-                  characters.push(res[i].data.results[j].name)
-                  arrLocations.push(res[i].data.results[j].location.name)
-                }
-              }
-            }
-          })
-        )
-        .then(console.log(characters))
-        .catch(error => {
-          console.log(error)
-        })
-    } catch (err) {
-      console.error(err)
-    }
-    const tempLocations = new Set(arrLocations)
-    let locations = [...tempLocations]
-  }
-
   useEffect(() => {
-      console.time()
     async function fetchInitialData() {
-      await axios.all([
+      await axios
+        .all([
           axios.get('https://rickandmortyapi.com/api/episode'),
           axios.get('https://rickandmortyapi.com/api/location'),
           axios.get('https://rickandmortyapi.com/api/character'),
@@ -104,21 +39,20 @@ export const ApiDataProvider = ({ children }) => {
             setTotalCharacters(res[2].data.info.count)
             setTotalCharactersPages(res[2].data.info.pages)
             setIsFetching(false)
-        })
+          })
         )
         .catch(error => console.log(error))
     }
     fetchInitialData()
-    getAllEpisodes()
-    getCharactersAndLocation()
-    console.timeEnd()
-  })
-
+  },[])
+  
   const value = {
+    totalEpisodesPages,
+    totalCharactersPages,
     totalCharacters,
     totalEpisodes,
     totalLocations,
-    isFetching,
+    isFetching
   }
 
   return <apiContext.Provider value={value}>{children}</apiContext.Provider>

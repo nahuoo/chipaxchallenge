@@ -21,6 +21,7 @@ import {
 import { ColorModeSwitcher } from '../ColorModeSwitcher'
 import { NavItem } from './NavItem'
 
+
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
