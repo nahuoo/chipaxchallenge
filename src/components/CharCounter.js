@@ -86,7 +86,7 @@ export const CharCounter = () => {
 
   return (
     <Grid
-      templateColumns={{ md: '1fr', lg: '1.8fr 1.2fr' }}
+      templateColumns={'1md'}
       templateRows={{ md: '1fr auto', lg: '1fr' }}
       my="26px"
       gap="24px"
@@ -111,7 +111,7 @@ export const CharCounter = () => {
                   Se encuentran {charInLocations} letras L en todos los
                   Escenarios
                 </Text>
-                <Text fontSize="sm" color="gray.400" fontWeight="normal">
+                <Text fontSize="sm" color="gray.400" fontWeight="normal" mb='10px'>
                   Se encuentrasn {charInEpisodes} letras E en todos los
                   Episodios
                 </Text>
@@ -124,6 +124,7 @@ export const CharCounter = () => {
                     my={{ sm: '1.5rem', lg: '0px' }}
                     onClick={handleClick}
                     border={'1px white solid'}
+                    mb='10px'
                   >
                     <Text
                       fontSize="sm"
@@ -134,7 +135,7 @@ export const CharCounter = () => {
                       my={{ sm: '1.5rem', lg: '0px' }}
                       _hover={{ me: '4px', color: 'red' }}
                     >
-                      Traer datos
+                      Traer datos de la API
                     </Text>
                   </Button>
                 </Flex>
