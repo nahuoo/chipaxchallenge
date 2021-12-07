@@ -8,6 +8,7 @@ import {
   Drawer,
   DrawerContent,
   Text,
+  Button,
   useDisclosure,
 } from '@chakra-ui/react'
 import {
@@ -48,6 +49,7 @@ export const Navbar = () => {
 }
 
 const SidebarContent = ({ onClose, ...rest }) => {
+
   return (
     <Box
       transition="5s ease"
@@ -63,12 +65,18 @@ const SidebarContent = ({ onClose, ...rest }) => {
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           ChipaxChallenge
         </Text>
-      <ColorModeSwitcher />
+        <ColorModeSwitcher />
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
-      <NavItem icon={FiHome}>Home</NavItem>
-      <NavItem icon={FiTrendingUp}>Char Counter</NavItem>
-      <NavItem icon={FiCompass}>Episodde Location</NavItem>
+      <NavItem icon={FiHome} route={'/'}>
+        Home
+      </NavItem>
+      <NavItem icon={FiTrendingUp} route={'/charcounter'}>
+        Char Counter
+      </NavItem>
+      <NavItem icon={FiCompass} route={'/episodelocation'}>
+        Episode Location
+      </NavItem>
     </Box>
   )
 }
