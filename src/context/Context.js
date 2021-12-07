@@ -22,42 +22,6 @@ export const ApiDataProvider = ({ children }) => {
   const [totalCharactersPages, setTotalCharactersPages] = useState(0)
   const [totalLocations, setTotalLocations] = useState(0)
   const [isFetching, setIsFetching] = useState(true)
-  const [locations, setLocations] = useState([])
-  const [characters, setCharacters] = useState([])
-
-  const getCharactersAndLocation = async () => {
-    let indexPages = []
-    let arrLocations = []
-    let tempCharacters = []
-    let tempLocations
-    try {
-      for (let i = 1; i < totalCharactersPages + 1; i++) {
-        indexPages.push(i)
-      }
-      await axios.all(allUrls(indexPages, 'character'))
-        .then(
-          axios.spread((...res) => {
-            for (let i = 0; i < res.length; i++) {
-              for (let j = 0; j < 20; j++) {
-                if (res[i].data.results[j]?.id <= totalCharacters) {
-                  tempCharacters.push(res[i].data.results[j].name)
-                  arrLocations.push(res[i].data.results[j].location.name)
-                }
-              }
-            }
-          })
-        ).then(
-          tempLocations = new Set(arrLocations),
-          setLocations([...tempLocations])
-        )
-        .then(setCharacters(tempCharacters))
-        .catch(error => {
-          console.log(error)
-        })
-    } catch (err) {
-      console.error(err)
-    }
-  }
 
   useEffect(() => {
     async function fetchInitialData() {
@@ -84,13 +48,11 @@ export const ApiDataProvider = ({ children }) => {
   
   const value = {
     totalEpisodesPages,
-    getCharactersAndLocation,
+    totalCharactersPages,
     totalCharacters,
     totalEpisodes,
     totalLocations,
-    isFetching,
-    locations,
-    characters
+    isFetching
   }
 
   return <apiContext.Provider value={value}>{children}</apiContext.Provider>
