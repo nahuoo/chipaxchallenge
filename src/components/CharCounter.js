@@ -81,9 +81,9 @@ export const CharCounter = () => {
     }
     getData()
     let endTime = performance.now()
-    setTotalTime((endTime - startTime) / 1000 + ' segundos')
+    setTotalTime(Math.floor((endTime - startTime)*1000)/1000)
+    
   }
-
   return (
     <Grid
       templateColumns={'1md'}
@@ -142,7 +142,7 @@ export const CharCounter = () => {
                 <Spacer />
                 <Text fontSize="sm" color="gray.400" fontWeight="bold">
                   El tiempo total entre pedir los datos y mostrarlos en pantalla
-                  es de {totalTime}
+                  es de {totalTime} ms
                 </Text>
               </Flex>
             )}
