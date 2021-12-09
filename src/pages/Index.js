@@ -1,7 +1,6 @@
 import {
   Box,
   Flex,
-  Grid,
   SimpleGrid,
   Spacer,
   Stat,
@@ -20,6 +19,7 @@ export const Index = () => {
   const { isFetching, totalCharacters, totalEpisodes, totalLocations } = useContext(apiContext)
   return (
     <Flex
+      w={{ sm: 'full', md: '70%' }}
       ml={{ sm: 1, md: '20%' }}
       flexDirection="column"
       pt={{ base: '120px', md: '75px' }}
@@ -86,11 +86,11 @@ export const Index = () => {
           </Box>
         </Box>
       </SimpleGrid>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/charcounter" element={<CharCounter />} />
-          <Route path="/episodelocation" element={<EpisodeLocation />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/charcounter" element={<CharCounter />} />
+        <Route path="/episodelocation" element={<EpisodeLocation />} />
+      </Routes>
     </Flex>
   )
 }
