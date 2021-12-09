@@ -9,13 +9,13 @@ import { useState, useContext } from 'react'
 import { apiContext } from '../context/Context'
 import { allUrls } from '../context/Context'
 import axios from 'axios'
+import { ModalComponent } from './Modal'
 
 export const EpisodeLocation = () => {
     const [allEpisodes, setAllEpisodes] = useState('')
     const [isFetching, setIsFetching] = useState(true)
     const [toogle, setToogle] = useState(false)
-    const [arrCharactersUrls, setArrCharactersUrls] = useState([])
-    const [locationsOrigins, setLocationsOrigins] = useState([])
+ 
       const {
         totalEpisodesPages,
         totalEpisodes,
@@ -54,43 +54,7 @@ export const EpisodeLocation = () => {
             getEpisodesData()
             setToogle(!toogle)
         }
-
-        const getCharactersUrl = () => { 
-            let temp = []
-            arrCharactersUrls.map( characterUrl =>
-              temp.push(
-                axios.get(
-                  characterUrl
-                )
-              )
-            )
-            return temp
-        }
-
-        const handleButton = (id) => {
-            let tempLocations = []
-            let tempLocationsName  
-            axios
-              .get('https://rickandmortyapi.com/api/episode/' + id)
-              .then(res => setArrCharactersUrls(res.data.characters))
-            getCharactersUrl()
-            
-            async function fetchLocationsOrigins() {
-              await axios
-                .all(getCharactersUrl())
-                .then(
-                  axios.spread((...res) => {
-                    res.map( res => tempLocations.push(res.data.origin.name))
-                    tempLocationsName = new Set(tempLocations)
-                    setLocationsOrigins([...tempLocationsName])
-                  })
-                )
-                .catch(error => console.log(error))
-            }
-            fetchLocationsOrigins()
-            console.log(locationsOrigins)
-
-        }
+        
    return (
      <Grid
        templateColumns={{ md: '1fr', lg: '1fr 1fr' }}
@@ -98,8 +62,22 @@ export const EpisodeLocation = () => {
        my="26px"
        gap="24px"
      >
-       {isFetching ? <Button onClick={handleClick}> Mostrar episodios </Button> : '' }       
-       {isFetching ? '' : allEpisodes.map(episode => <Button key={episode.id} onClick={ () => handleButton(episode.id) } >{episode.name}</Button>)}
+       {isFetching ? (
+         <Button onClick={handleClick}> Mostrar episodios </Button>
+       ) : (
+         ''
+       )}
+       {isFetching
+         ? ''
+         : allEpisodes.map(episode => (
+             <ModalComponent
+               key={episode.id}
+               title={episode.name}
+               id={episode.id}
+             >
+               {episode.name}
+             </ModalComponent>
+           ))}
        <Box minHeight="290.5px" p="1.2rem">
          <Box w="100%">
            <Flex flexDirection={{ sm: 'column', lg: 'row' }} w="100%">
@@ -113,8 +91,7 @@ export const EpisodeLocation = () => {
                  Rick and Morty Challenge
                </Text>
 
-               <Flex align="center">
-               </Flex>
+               <Flex align="center"></Flex>
              </Flex>
            </Flex>
          </Box>
