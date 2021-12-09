@@ -17,9 +17,11 @@ export const ModalComponent = props => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [arrCharactersUrls, setArrCharactersUrls] = useState([])
   const [locationsOrigins, setLocationsOrigins] = useState('')
-  
+  const [totalTime, setTotalTime] = useState(0)
+
 
     useEffect( () => {
+      let startTime = performance.now()
       const getCharactersUrl = () => {
         let temp = []
         arrCharactersUrls.map(characterUrl =>
@@ -45,6 +47,8 @@ export const ModalComponent = props => {
           })
       }
       getData()
+      let endTime = performance.now()
+      setTotalTime(Math.floor((endTime - startTime) * 1000) / 1000)
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[isOpen])
 
@@ -62,9 +66,13 @@ export const ModalComponent = props => {
             <ModalCloseButton />
             <ModalBody>
               <Text fontSize="sm" color="gray.400" fontWeight="bold">
-                Las locaciones de los personajes en este capítulo son:{' '}
+                Las locaciones de los personajes en este capítulo son:
               </Text>
               {locationsOrigins}
+              <Text fontSize="sm" color="gray.400" fontWeight="bold">
+                Traer los datos de la API y mostrarlos en pantalla sin repetir tardó un total de:
+              </Text>
+                {totalTime}ms
             </ModalBody>
 
             <ModalFooter>
