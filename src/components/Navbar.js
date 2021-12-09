@@ -3,7 +3,6 @@ import {
   Box,
   CloseButton,
   Flex,
-  HStack,
   useColorModeValue,
   Drawer,
   DrawerContent,
@@ -15,7 +14,6 @@ import {
   FiTrendingUp,
   FiCompass,
   FiMenu,
-  FiBell,
 } from 'react-icons/fi'
 import { ColorModeSwitcher } from '../ColorModeSwitcher'
 import { NavItem } from './NavItem'
@@ -109,14 +107,6 @@ const MobileNav = ({ onOpen, ...rest }) => {
       >
         ChipaxChallenge
       </Text>
-      <HStack spacing={{ base: '0', md: '6' }}>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        />
-      </HStack>
     </Flex>
   )
 }
