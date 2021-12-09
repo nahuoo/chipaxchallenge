@@ -31,15 +31,17 @@ export const Home = () => {
                 Nahuel Sigismondi
               </Text>
               <Text fontSize="sm" color="gray.400" fontWeight="normal">
-                Fullstack developer Chipax
+                Fullstack dev
               </Text>
               <Spacer />
               <Flex align="center">
                 <Button
+                  as='a'
                   p="0px"
                   variant="no-hover"
                   bg="transparent"
                   my={{ sm: '1.5rem', lg: '0px' }}
+                  href='mailto:nahuel.sigismondi@gmail.com'
                 >
                   <Text
                     fontSize="sm"
