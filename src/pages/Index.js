@@ -33,7 +33,7 @@ export const Index = () => {
               fontWeight="bold"
               pb=".1rem"
             >
-              Characters
+              Personajes totales hasta la fecha:
             </StatLabel>
             <Flex>
               <StatNumber fontSize="lg" color="gray.500">
@@ -52,7 +52,7 @@ export const Index = () => {
                   fontWeight="bold"
                   pb=".1rem"
                 >
-                  Locations
+                  Locaciones totales hasta la fecha:
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color="gray.500">
@@ -74,7 +74,7 @@ export const Index = () => {
                   fontWeight="bold"
                   pb=".1rem"
                 >
-                  Episodes
+                  Episodios totales hasta la fecha:
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color="gray.500" fontWeight="bold">

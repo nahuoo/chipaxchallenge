@@ -37,7 +37,7 @@ export const Home = () => {
               <Flex align="center">
                 <Button
                   as='a'
-                  p="0px"
+                  p="5%"
                   variant="no-hover"
                   bg="transparent"
                   my={{ sm: '1.5rem', lg: '0px' }}

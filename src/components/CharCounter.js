@@ -118,7 +118,7 @@ export const CharCounter = () => {
                 <Spacer />
                 <Flex align="center">
                   <Button
-                    p="0px"
+                    p="2%"
                     variant="no-hover"
                     bg="transparent"
                     my={{ sm: '1.5rem', lg: '0px' }}
@@ -142,7 +142,7 @@ export const CharCounter = () => {
                 <Spacer />
                 <Text fontSize="sm" color="gray.400" fontWeight="bold">
                   El tiempo total entre pedir los datos y mostrarlos en pantalla
-                  es de {totalTime} ms
+                  es de {totalTime} segundos
                 </Text>
               </Flex>
             )}
