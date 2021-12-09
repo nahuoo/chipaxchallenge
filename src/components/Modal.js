@@ -20,35 +20,33 @@ export const ModalComponent = props => {
   
 
     useEffect( () => {
-        const getCharactersUrl = () => {
-          let temp = []
-          arrCharactersUrls.map(characterUrl =>
-            temp.push(axios.get(characterUrl))
-          )
-          return temp
-        }
+      const getCharactersUrl = () => {
+        let temp = []
+        arrCharactersUrls.map(characterUrl =>
+          temp.push(axios.get(characterUrl))
+        )
+        return temp
+      }
 
-    const getData = async () => {
-      let tempLocations = []
-      let tempLocationsName
-      await axios
-        .get('https://rickandmortyapi.com/api/episode/' + props.id)
-        .then(res => setArrCharactersUrls(res.data.characters))
-        .then(() => {
-          axios
-            .all(getCharactersUrl())
-            .then(
+      const getData = async () => {
+        let tempLocations = []
+        let tempLocationsName
+        await axios
+          .get('https://rickandmortyapi.com/api/episode/' + props.id)
+          .then(res => setArrCharactersUrls(res.data.characters))
+          .then(() => {
+            axios.all(getCharactersUrl()).then(
               axios.spread((...res) => {
                 res.map(res => tempLocations.push(res.data.origin.name + ', '))
                 tempLocationsName = new Set(tempLocations)
                 setLocationsOrigins([...tempLocationsName])
               })
             )
-        })
-    }
-    getData()
-    
-  },[isOpen])
+          })
+      }
+      getData()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[isOpen])
 
   const handleButton = () => {
       onOpen()
