@@ -33,7 +33,7 @@ export const Index = () => {
               fontWeight="bold"
               pb=".1rem"
             >
-              Personajes totales hasta la fecha:
+              Personajes hasta la fecha:
             </StatLabel>
             <Flex>
               <StatNumber fontSize="lg" color="gray.500">
@@ -42,9 +42,7 @@ export const Index = () => {
             </Flex>
           </Stat>
         </Box>
-        <Box minH="83px">
-          <Box>
-            <Flex w="60%">
+        <Box>    
               <Stat>
                 <StatLabel
                   fontSize="sm"
@@ -52,7 +50,7 @@ export const Index = () => {
                   fontWeight="bold"
                   pb=".1rem"
                 >
-                  Locaciones totales hasta la fecha:
+                  Locaciones hasta la fecha:
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color="gray.500">
@@ -61,12 +59,9 @@ export const Index = () => {
                 </Flex>
               </Stat>
               <Spacer />
-            </Flex>
-          </Box>
         </Box>
         <Box minH="83px">
           <Box>
-            <Flex w="60%">
               <Stat me="auto">
                 <StatLabel
                   fontSize="sm"
@@ -74,7 +69,7 @@ export const Index = () => {
                   fontWeight="bold"
                   pb=".1rem"
                 >
-                  Episodios totales hasta la fecha:
+                  Episodios hasta la fecha:
                 </StatLabel>
                 <Flex>
                   <StatNumber fontSize="lg" color="gray.500" fontWeight="bold">
@@ -82,7 +77,6 @@ export const Index = () => {
                   </StatNumber>
                 </Flex>
               </Stat>
-            </Flex>
           </Box>
         </Box>
       </SimpleGrid>

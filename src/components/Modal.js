@@ -48,7 +48,7 @@ export const ModalComponent = props => {
       }
       getData()
       let endTime = performance.now()
-      setTotalTime(Math.floor((endTime - startTime) * 1000) / 1000)
+      setTotalTime(Math.floor((endTime - startTime) * 1000) / 100)
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[isOpen])
 
@@ -72,7 +72,7 @@ export const ModalComponent = props => {
               <Text fontSize="sm" color="gray.400" fontWeight="bold">
                 Traer los datos de la API y mostrarlos en pantalla sin repetir tardó un total de:
               </Text>
-                {totalTime} segundos
+                {totalTime} ms
             </ModalBody>
 
             <ModalFooter>
